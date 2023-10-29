@@ -9,32 +9,32 @@ const createUser = async ({ username, password }) => {
 	try {
 		const existingUser = await userModel.findOne({
 			username: userDetails.username,
-        });
-        
-        console.log(existingUser)
+		});
 
-		if (existingUser) {
+		console.log(existingUser);
+
+		if (!existingUser) {
+			const newUser = await userModel.create({
+				username: userDetails.username,
+				password: userDetails.password,
+            });
+            logger.info(`User account created: ${userDetails.username}`);
+			return {
+				message: "Account created successfully",
+				code: 200,
+				newUser,
+			};
+		} else {
 			logger.error(
 				`User account creation failed: User with email ${userDetails.username} already exists.`
 			);
 			return {
-                message: "Oops! User already exist",
-                existingUser,
+				message: "Oops! User already exist",
+				existingUser,
 				code: 409,
 			};
 		}
 
-		const newUser = await userModel.create({
-			username: userDetails.username,
-			password: userDetails.password,
-		});
-
-		logger.info(`User account created: ${userDetails.username}`);
-		return {
-			message: "Account created successfully",
-			code: 200,
-			newUser,
-		};
 	} catch (error) {
 		logger.error(`Error creating user account: ${error}`);
 		console.error(error);
@@ -54,7 +54,9 @@ const loginUser = async ({ username, password }) => {
 		});
 
 		if (!user) {
-			logger.error(`User login failed: User account not found for email ${loginDetails.username}`);
+			logger.error(
+				`User login failed: User account not found for email ${loginDetails.username}`
+			);
 			return {
 				code: 404,
 				message: "Oops! User account not found",
@@ -64,7 +66,9 @@ const loginUser = async ({ username, password }) => {
 		const validPassword = await user.isValidPassword(loginDetails.password);
 
 		if (!validPassword) {
-			logger.error(`User login failed: Invalid credentials for email ${loginDetails.username}`);
+			logger.error(
+				`User login failed: Invalid credentials for email ${loginDetails.username}`
+			);
 			return {
 				code: 422,
 				message: "Invalid credential. Username or Password is incorrect",
@@ -77,21 +81,21 @@ const loginUser = async ({ username, password }) => {
 			{ expiresIn: "1h" }
 		);
 
-        logger.info(`User account logged in: ${user.username}`)
+		logger.info(`User account logged in: ${user.username}`);
 		return {
 			message: "Account Login successfully",
 			code: 200,
 			token,
 			user,
 		};
-    } catch (error) {
-        logger.error(`Error logging in user: ${error}`)
-        console.error(error);
-        return {
-            message: "Internal server error",
-            code: 500
-        }
-    }
+	} catch (error) {
+		logger.error(`Error logging in user: ${error}`);
+		console.error(error);
+		return {
+			message: "Internal server error",
+			code: 500,
+		};
+	}
 };
 
 module.exports = { createUser, loginUser };
