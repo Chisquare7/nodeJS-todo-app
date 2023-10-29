@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<main>
+			<table>
+				<thead>
+					<tr>
+						<th>Task Title</th>
+						<th>Task Description</th>
+						<th>Task Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% taskDetails.forEach(function(taskDetail) { %>
+					<tr>
+						<td><%= taskDetail.task_title %></td>
+						<td><%= taskDetail.task_description %></td>
+						<td><%= taskDetail.task_state %></td>
+						<td>
+							<form action="/tasks/update/<%= taskDetail._id %>" method="PUT">
+								<% if (taskDetail.task_state === "Pending") { %>
+								<input type="hidden" name="task_state" value="Completed" />
+								<button type="submit" formmethod="post">Complete</button>
+								<% } %>
+							</form>
+							<form
+								action="/tasks/delete/<%= taskDetail._id %>"
+								method="DELETE"
+							>
+								<button type="submit" formmethod="post">Delete</button>
+							</form>
+						</td>
+					</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		</main>
+	</body>
+</html>

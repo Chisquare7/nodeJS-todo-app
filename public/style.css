@@ -1,0 +1,446 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+	font-family: "Inter", sans-serif;
+
+	--primary-color: #0a111f;
+	--main-text-color: #fff;
+	--secondary-color: #fca311;
+	--button-bg-color: #1fc77e;
+	--input-field-color: #08090a;
+}
+
+/* Global section */
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+body {
+	background-color: var(--primary-color);
+}
+
+.overall {
+	width: 90%;
+	max-width: 1280px;
+	margin: 3em auto;
+}
+
+/* Home page styling */
+
+/* 1. Nav Bars styling */
+
+.navContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 4em;
+}
+
+nav > ul {
+	display: flex;
+}
+
+.eachNav {
+	color: var(--main-text-color);
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.eachNav:hover {
+	color: #fca311;
+}
+
+li + li {
+	margin-left: 2.5em;
+}
+
+.appName {
+	color: #fca311;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+}
+
+/* 2. Hero section styling */
+
+.heroFlex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10em;
+}
+
+.heroCol {
+	flex-basis: 48%;
+}
+
+.heroHeading,
+.heroSubtext {
+	margin-bottom: 2em;
+}
+
+.heroHead {
+	color: var(--main-text-color);
+	font-size: 2.5rem;
+	font-weight: 500;
+}
+
+.heroHead > span {
+	color: #fca311;
+}
+
+.heroSubhead {
+	color: var(--main-text-color);
+	font-size: 0.9rem;
+	font-weight: 400;
+	line-height: 1.5rem;
+}
+
+.heroAction {
+	display: flex;
+	align-items: center;
+}
+
+.actionBtn + .actionBtn {
+	margin-left: 2em;
+}
+
+.actionBtn {
+	padding: 0.5em 2.5em;
+	background-color: #fca311;
+	color: var(--primary-color);
+	border: none;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.heroImg {
+	border-radius: 1rem;
+}
+
+/* Styling of Registration page */
+
+.regAppLogo {
+	margin: 0.2em 1em 0;
+}
+
+.regContainerFlex {
+	display: flex;
+	height: 100vh;
+}
+
+.regLeftBg {
+	background-image: url(./todo_bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 45%;
+}
+
+.regLeftContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 90vh;
+	text-align: center;
+}
+
+.regHeading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2em;
+}
+
+.loginHeading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.regHead {
+	color: var(--secondary-color);
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-right: 0.5em;
+}
+
+.formHead {
+	margin-top: 1.3em;
+}
+
+.regSubhead {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.regSubtext {
+	color: var(--main-text-color);
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.regSubtext > span {
+	font-weight: 700;
+}
+
+.regLeftAct {
+	margin-top: 4em;
+}
+
+.regLeftBtn {
+	padding: 0.5em 2.5em;
+	background-color: transparent;
+	color: var(--secondary-color);
+	border: 2px solid var(--secondary-color);
+	border-radius: 0.625rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+.regLeftBtn > a {
+	color: var(--secondary-color);
+}
+
+.regRightBg {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+.regFormCenter {
+	margin: 0 auto;
+	height: 80%;
+	width: 80%;
+}
+
+.formContainer {
+	margin-top: 5em;
+}
+
+.formHeading {
+	text-align: center;
+}
+
+.formHead {
+	color: var(--main-text-color);
+	font-size: 3rem;
+	font-weight: 600;
+	line-height: 1.5rem;
+	margin-bottom: 1.5em;
+}
+
+.formSubhead {
+	color: var(--main-text-color);
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+.labelContainer {
+	display: flex;
+	flex-direction: column;
+	font-size: 1.5rem;
+	color: var(--main-text-color);
+	font-weight: 500;
+	line-height: 1.25rem;
+	margin-top: 2em;
+	margin-bottom: 0.4em;
+}
+
+.inputField {
+	padding: 0.625em 0.875em;
+	outline: none;
+	border-radius: 0.5rem;
+	font-size: 1.5rem;
+	color: var(--input-field-color);
+	font-weight: 400;
+	line-height: 1.5rem;
+	margin-top: 0.3em;
+}
+
+.regSubmitButton {
+	width: 100%;
+	margin-top: 2em;
+	padding: 0.875em 0.875em;
+	border: none;
+	border-radius: 0.5rem;
+	outline: none;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.5rem;
+	color: var(--primary-color);
+	background-color: var(--secondary-color);
+	cursor: pointer;
+}
+
+.loginPoint {
+	text-align: center;
+	color: var(--main-text-color);
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin-top: 1.5em;
+}
+
+.loginPoint > a {
+	color: var(--secondary-color);
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+/* Styling of the Task List Dashboard */
+
+.dashHead {
+	width: 60%;
+	margin: 0 auto;
+	text-align: center;
+	color: var(--main-text-color);
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+.dashHead > span {
+	color: var(--secondary-color);
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 3em;
+	background-color: var(--primary-color);
+	color: var(--main-text-color);
+	border: 2px solid #fca311;
+}
+
+table th {
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+	padding: 10px;
+	text-align: center;
+	border: 1px solid var(--primary-color);
+}
+
+table td {
+	padding-left: 0.5em;
+}
+
+table,
+th,
+td {
+	border: 1px solid var(--secondary-color);
+}
+
+.actionFlex {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5em 0;
+}
+
+.eachAction {
+	margin: 0 0.5em;
+}
+
+.eachButton {
+	padding: 0.5em 1em;
+	border-radius: 0.8rem;
+	border: none;
+	background-color: var(--secondary-color);
+	color: var(--primary-color);
+	font-size: 1rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.comBtn {
+	background-color: #4caf50;
+	color: white;
+}
+
+.delBtn {
+	background-color: #f44336;
+	color: white;
+}
+
+.pendBtn {
+	background-color: blue;
+	color: white;
+}
+
+.createTaskButton {
+	width: 100%;
+	margin-top: 2em;
+	padding: 0.875em 0.875em;
+	border: none;
+	border-radius: 0.5rem;
+	outline: none;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.5rem;
+	color: #ffffff;
+	background-color: #0078d4;
+	cursor: pointer;
+}
+
+.taskAct {
+	margin-top: 1em;
+}
+
+.taskActField {
+	border: none;
+	outline: none;
+	padding: 1em;
+	border-radius: 0.5rem;
+	margin-top: 0.5em;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.userTask + .userTask {
+	margin-left: 1em;
+}
+
+/* Styling of the footer  */
+
+.footerContainer {
+	text-align: right;
+	margin-top: 6em;
+}
+
+.footerContent {
+	color: var(--main-text-color);
+}
+
+
+/* Styling of error pages */
+
+.errorContainer {
+    background-color: var(--main-text-color);
+    padding: 1em;
+    border-radius: .5rem;
+}
+
+.errorHeading { 
+    border-bottom: 2px solid #eee;
+    padding-bottom: 1em;
+}
+
+.errorSubhead {
+    padding-top: 1em;
+}
+
+.errorHead {
+    color: var(--input-field-color);
+}

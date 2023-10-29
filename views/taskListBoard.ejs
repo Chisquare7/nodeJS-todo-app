@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../public/style.css" />
+		<title><%=appName%> | Task Dashboard</title>
+	</head>
+	<body>
+		<div class="overall">
+			<header>
+				<div class="navContainer">
+					<div class="appName"><a href="/Welcome" class="appName"><%=appName%></a></div>
+					<div><%-include("partials/header.ejs")-%></div>
+				</div>
+			</header>
+			<div>
+				<h1 class="dashHead">
+					Welcome to Listify's Dashboard, <span><%= user.username %></span>
+					<br />
+					Your personal task management hub, making productivity a breeze.
+				</h1>
+			</div>
+			<main>
+				<form action="/tasks/create" , method="post">
+					<label for="task_title" class="labelContainer">
+						Task Title
+						<input
+							type="text"
+							id="task_title"
+							name="task_title"
+							value=""
+							placeholder="Task Title"
+							class="inputField"
+							required
+						/>
+					</label>
+					<label for="task_description" class="labelContainer">
+						Task Description
+						<input
+							type="text"
+							id="task_description"
+							name="task_description"
+							value=""
+							placeholder="Task Description"
+							class="inputField"
+							required
+						/>
+					</label>
+					<button type="submit" class="createTaskButton">Create a Task</button>
+				</form>
+
+				<div class="taskAct">
+					<button class="taskActField userTask"><a href="/taskListBoard">All</a></button>
+					<button class="taskActField userTask"><a href="/sort?state=pending">View Pending Tasks</a></button>
+					<button class="taskActField userTask"><a href="/sort?state=completed">View Completed Tasks</a></button>
+				</div>
+
+				<table>
+					<thead>
+						<tr>
+							<th>S/N</th>
+							<th>Task Title</th>
+							<th>Task Description</th>
+							<th>Task Status</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% taskDetails.forEach(function(taskDetail, index) { %>
+						<tr>
+							<td><%= index + 1 %></td>
+							<td><%= taskDetail.task_title %></td>
+							<td><%= taskDetail.task_description %></td>
+							<td><%= taskDetail.task_state %></td>
+							<td class="actionFlex">
+								<form
+									action="/tasks/update/<%= taskDetail._id %>"
+									method="PUT"
+									class="eachAction"
+								>
+									<% if (taskDetail.task_state === "Pending") { %>
+									<input type="hidden" name="task_state" value="Completed" />
+									<button
+										type="submit"
+										formmethod="post"
+										class="eachButton comBtn"
+									>
+										Complete
+									</button>
+									<% } else { %>
+									<input type="hidden" name="task_state" value="Pending" />
+									<button
+										type="submit"
+										formmethod="post"
+										class="eachButton pendBtn"
+									>
+										Pending
+									</button>
+									<% } %>
+								</form>
+								<form
+									action="/tasks/delete/<%= taskDetail._id %>"
+									method="DELETE"
+									class="eachAction"
+								>
+									<button
+										type="submit"
+										formmethod="post"
+										class="eachButton delBtn"
+									>
+										Delete
+									</button>
+								</form>
+							</td>
+						</tr>
+						<% }) %>
+					</tbody>
+				</table>
+			</main>
+			<div><%-include("partials/footer.ejs")-%></div>
+		</div>
+	</body>
+</html>

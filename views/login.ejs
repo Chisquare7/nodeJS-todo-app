@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../public/style.css" />
+		<title><%=appName%> | Login</title>
+	</head>
+	<body>
+		<div class="regContainerFlex">
+			<div class="regLeftBg">
+				<div class="regAppLogo">
+					<a href="/Welcome" class="appName"><%=appName%></a>
+				</div>
+				<div class="regLeftContent">
+					<div class="regHeading">
+						<h1 class="regHead">Create a New Account</h1>
+					</div>
+					<div class="regSubhead">
+						<p class="regSubtext">
+							Set up your account on Listify and begin your journey into the
+							world of To-Do List with <span>Listify</span>
+						</p>
+					</div>
+					<div class="regLeftAct">
+						<button class="regLeftBtn">
+							<a href="/register">Create a New Account</a>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="regRightBg">
+				<div class="regFormCenter">
+					<div class="formHeading">
+						<div class="loginHeading">
+							<h1 class="formHead">Welcome Back</h1>
+							<img src="../public/hand_img.png" alt="welcome hand" />
+						</div>
+						<p class="formSubhead">
+							Stay connected to your favourite To-Do List wherever, whenever
+							with Listify
+						</p>
+					</div>
+					<form action="/users/login" method="post">
+						<label for="username" class="labelContainer">
+							Username
+							<input
+								type="text"
+								id="username"
+								name="username"
+								placeholder="Username"
+								class="inputField"
+								required
+							/>
+						</label>
+						<label for="password" class="labelContainer">
+							Password
+							<input
+								type="password"
+								id="password"
+								name="password"
+								placeholder="Password"
+								class="inputField"
+								required
+							/>
+						</label>
+						<div>
+							<button type="submit" class="regSubmitButton">
+								Sign in to Account
+							</button>
+						</div>
+						<div class="loginPoint">
+							Don't have an account? <a href="/register">Register</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
