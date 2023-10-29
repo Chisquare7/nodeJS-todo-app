@@ -2,3 +2,4 @@
 {"level":"error","message":"User login failed: User account not found for email Faitty","service":"todo-component"}
 {"level":"info","message":"User account created: Faitty","service":"todo-component"}
 {"level":"info","message":"User account logged in: Faitty","service":"todo-component"}
+{"level":"info","message":"User account created: Uche","service":"todo-component"}
