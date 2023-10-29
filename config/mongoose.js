@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 function databaseConnect() {
-	mongoose.connect(process.env.DB_URL);
+	mongoose.connect(process.env.DB_URL, {
+		serverSelectionTimeoutMS: 60000,
+	});
 
 	mongoose.connection.on("connected", () => {
 		console.log("Database connection successful");
