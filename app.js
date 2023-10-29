@@ -6,6 +6,7 @@ const { loginAuthenticator } = require("./globalAuthentication/authMiddleware");
 const taskModel = require("./models/taskModel");
 const userRoute = require("./users/userRoute");
 const taskRoute = require("./tasks/taskRoute");
+const logger = require("./config/winston");
 require("dotenv").config();
 
 const PORT = process.env.PORT;
@@ -110,6 +111,14 @@ app.get("/wrongUserDetails", (req, res) => {
 		navs: ["register", "login"],
 	});
 });
+
+app.get("*", (req, res) => {
+	logger.error("Route not found")
+	return res.status(404).json({
+		data: null,
+		error: "Route not found"
+	})
+})
 
 app.listen(PORT, () => {
 	console.log(`server started running at: http://localhost:${PORT}`);

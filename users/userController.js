@@ -9,14 +9,17 @@ const createUser = async ({ username, password }) => {
 	try {
 		const existingUser = await userModel.findOne({
 			username: userDetails.username,
-		});
+        });
+        
+        console.log(existingUser)
 
 		if (existingUser) {
 			logger.error(
 				`User account creation failed: User with email ${userDetails.username} already exists.`
 			);
 			return {
-				message: "Oops! User already exist",
+                message: "Oops! User already exist",
+                existingUser,
 				code: 409,
 			};
 		}
